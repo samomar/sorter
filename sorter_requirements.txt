@@ -1,0 +1,137 @@
+### Requirements for Sorter (All Implemented)
+
+1. **Floating Widget**: A compact, unobtrusive widget that appears on the right side of the screen, designed for quick access without intruding on workspace.
+
+2. **Drop Zones**:
+   - The application starts with a default set of drop zones for file categorization (e.g., Photos, Videos, Documents, Downloads).
+   - Each drop zone should be labeled appropriately and should direct files to a corresponding folder within the user's home directory.
+   - The number and types of drop zones can be easily customized by modifying the `zones` variable in the code.
+   - This allows for flexible expansion or modification of categorization options without major code changes.
+
+3. **File Drag-and-Drop Capability**:
+   - The application should support dragging and dropping files from any source, such as the desktop, file manager, or compatible web browsers.
+   - Ensure smooth, error-free handling of drag-and-drop actions, with clear feedback when a file is accepted or moved.
+
+4. **Auto-Hide Functionality**:
+   - The widget should start in a hidden state.
+   - It should automatically become visible when the user hovers the mouse over the right edge of the screen.
+   - No animations or delays are needed when showing or hiding the widget, prioritizing performance and speed.
+   - The widget should stay visible as long as the mouse is inside the widget area, regardless of movement.
+   - It should hide again only when the mouse leaves the widget area completely.
+   - The widget should hide when the mouse leaves its area, even during an active drag operation that hasn't resulted in a drop.
+   - The visibility control should be responsive and consistent across all usage scenarios.
+
+5. **Instant Appearance**:
+   - The widget should appear immediately without any noticeable delay upon mouse hover over the designated activation area.
+   - Once activated, it should remain visible until the user finishes the interaction.
+
+6. **Compatibility**:
+   - Fully functional with **Ubuntu 24 GNOME**.
+   - Should be compatible with drag-and-drop actions from **Chrome-based browsers** and other browsers, ensuring a seamless experience for users who work with files from both the file system and the web.
+
+7. **File Sorting**:
+   - The software should correctly sort files by moving them to the designated target folders based on the drop zone. For example:
+     - Files dropped in the **Photos** zone should go to the **Pictures** folder.
+     - Files dropped in the **Documents** zone should go to the **Documents** folder.
+     - Files dropped in the **Downloads** zone should go to the **Downloads** folder.
+   - Should handle file path creation or adjustments in case folders are missing.
+
+8. **Simple, Minimal Implementation**:
+   - The application should be straightforward, focusing on essential functionality without unnecessary complexity.
+   - Avoid any intricate dependencies, prioritizing lightweight and easy maintenance.
+   
+9. **Python-based Implementation**:
+   - Designed to run as a Python script for ease of modification, debugging, and installation.
+   - Leverage the **Gtk** library for UI and **Xlib** for global drag-and-drop detection, supporting cross-functional capabilities with simplicity in mind.
+
+10. **Global Drag Detection**:
+    - Capable of detecting drag events that start outside the application, facilitating file handling directly from external sources.
+    - Responsive to global drag-and-drop initiation, making the user experience seamless and integrated across the desktop environment. 
+
+11. **Robust Data Handling**:
+    - The application should gracefully handle various types of drag-and-drop data, including but not limited to:
+      - Local file URIs
+      - Web URLs
+      - Plain text
+      - Empty or null data
+    - Implement proper error handling to prevent crashes when unexpected data is received.
+
+12. **Logging and Debugging**:
+    - Include a comprehensive logging system that can be easily toggled between debug and production modes.
+    - Log all significant events, including drag-and-drop operations, file movements, and any errors encountered.
+
+13. **Performance Optimization**:
+    - Ensure that the application remains responsive, even when handling large files or multiple drag-and-drop operations in quick succession.
+    - Implement efficient file handling methods to minimize system resource usage.
+
+14. **Cross-Browser Compatibility**:
+    - Ensure compatibility with various browsers, including Chrome, Firefox, and other Gecko-based browsers.
+    - Handle different data formats that may be provided by different browsers during drag-and-drop operations.
+
+15. **User Feedback**:
+    - Provide clear visual feedback when files are successfully moved or when errors occur.
+    - Implement a simple notification system for important events or errors.
+
+16. **Application Termination**:
+    - Implement a right-click menu option to close/terminate the application.
+    - Ensure proper cleanup of resources when the application is terminated.
+
+17. **Folder Quick Access**:
+    - Clicking on a drop zone should open the corresponding folder in the default file manager.
+    - This provides quick access to the sorted files without leaving the application.
+
+18. **Customization**:
+    - Provide an easy way to customize drop zones, potentially through a configuration file.
+    - Allow users to modify the activation area size and position if needed.
+
+19. **Drag Operation Handling**:
+    - The widget should respond appropriately to all stages of a drag operation, including showing when a drag enters its area and hiding when a drag leaves without dropping.
+
+20. **Stability and Resource Management**:
+    - Ensure the application remains stable during extended use and multiple drag-and-drop operations.
+    - Implement proper resource management to prevent memory leaks or excessive CPU usage.
+
+21. **Continuous Improvement**:
+    - Regularly review and optimize code for better performance and maintainability.
+    - Stay updated with the latest GTK and Python best practices to ensure the application remains modern and efficient.
+
+22. **User Documentation**:
+    - Provide comprehensive documentation for users, including setup instructions and usage guidelines.
+    - Include clear instructions on how to customize drop zones and other configurable aspects of the application.
+
+23. **Easy Customization**:
+    - Implement a configuration file for users to easily customize drop zones and other settings without modifying the source code.
+    - Provide clear instructions in the documentation on how to use and modify the configuration file.
+
+24. **Single Instance**:
+    - Ensure only one instance of Sorter can run at a time.
+    - Implement a file locking mechanism to prevent multiple instances.
+
+25. **Startup Notification**:
+    - Display a brief notification above the mouse cursor when Sorter is launched.
+    - The notification should confirm that Sorter is active and disappear after a short duration.
+
+26. **Multiple Instance Notification**:
+    - If a user attempts to start a second instance of Sorter, display a notification informing them that Sorter is already running.
+    - This notification should appear above the mouse cursor and disappear after a short duration.
+
+27. **Conflict Resolution**: 
+    - Implement automatic file renaming to handle cases where a file with the same name already exists in the target folder.
+
+28. **High DPI Support**: 
+    - Ensure correct positioning and sizing of the widget and notifications on high DPI displays by accounting for display scaling factors.
+
+29. **Improved Error Handling**: 
+    - Enhance error handling and logging for file operations, providing more detailed information about failures.
+
+30. **Optimized File Processing**: 
+    - Streamline the file processing logic to handle various input types (URIs, file paths, URLs) more efficiently.
+
+31. **Enhanced Notification System**: 
+    - Improve the startup and multiple instance notifications with better positioning and more informative messages.
+
+32. **File Naming for Downloads**:
+    - For downloaded files, prepend the current date to the original file name.
+    - Ensure unique file names by adding a numeric suffix if a file with the same name already exists.
+
+By meeting these requirements, Sorter provides an intuitive, efficient, and robust way to organize files with a minimal yet powerful drag-and-drop user interface, fully compatible with the Ubuntu GNOME desktop environment. The application is now optimized for performance, stability, and user experience across various scenarios and browser types, with comprehensive documentation to support users.
